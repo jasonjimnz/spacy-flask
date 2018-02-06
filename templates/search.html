@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Words</title>
+    <style>
+        fieldset > input[type=text]{
+            width: 80%;
+        }
+        fieldset > input[type=submit]{
+            width: 19%;
+        }
+        fieldset{
+            margin: 15px auto;
+        }
+        table{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    {% if language == "en" %}
+        <h2>Tag words</h2>
+        <form action="{{ url_for('home_en') }}" method="get">
+            <fieldset>
+                <input type="text" placeholder="Text to process" name="text" required {% if text %} value="{{ text }}{% endif %}">
+                <input type="submit" value="Process">
+            </fieldset>
+        </form>
+    {% elif language == "es" %}
+        <h2>Etiqueta palabras</h2>
+        <form action="{{ url_for('home_es') }}" method="get">
+            <fieldset>
+                <input type="text" placeholder="Texto a procesar" name="text" required {% if text %} value="{{ text }}{% endif %}">
+                <input type="submit" value="Procesar">
+            </fieldset>
+        </form>
+    {% endif %}
+    {% if text %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Text</th>
+                    <th>Lemma</th>
+                    <th>Pos</th>
+                    <th>Tag</th>
+                    <th>Dependency</th>
+                    <th>Shape</th>
+                    <th>Alpha</th>
+                    <th>Stopword</th>
+                    <th>Head text</th>
+                    <th>Head Pos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in tokens %}
+                    <tr>
+                        <td>{{ t.text }}</td>
+                        <td>{{ t.lemma }}</td>
+                        <td>{{ t.pos }}</td>
+                        <td>{{ t.tag }}</td>
+                        <td>{{ t.dep }}</td>
+                        <td>{{ t.shape }}</td>
+                        <td>{{ t.alpha }}</td>
+                        <td>{{ t.stop }}</td>
+                        <td>{{ t.head_text }}</td>
+                        <td>{{ t.head_pos }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>

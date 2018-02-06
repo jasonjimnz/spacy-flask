@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Words</title>
+    <style>
+        fieldset > input[type=text]{
+            width: 80%;
+        }
+        fieldset > input[type=submit]{
+            width: 19%;
+        }
+        fieldset{
+            margin: 15px auto;
+        }
+        table{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h2>Process text with Spacy.io</h2>
+    <ul>
+        <li><a href="{{ url_for('home_en') }}">Process text in english</a></li>
+        <li><a href="{{ url_for('home_es') }}">Procesa texto en español</a></li>
+    </ul>
+</body>
+</html>
