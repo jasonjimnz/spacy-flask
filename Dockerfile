@@ -4,11 +4,11 @@ MAINTAINER Jason Jimenez Cruz
 
 # Installing base software
 RUN apt-get update && \
-    apt-get install git wget nano python3 python3-pip && \
+    apt-get install -y git wget nano python3 python3-pip && \
     pip3 install --upgrade pip && \
     pip3 install -U spacy && \
-    python3 -m spacy download en
-    python3 -m spacy download es
+    python3 -m spacy download en && \
+    python3 -m spacy download es && \
     pip3 install Flask
 
 # Download scripts from repo

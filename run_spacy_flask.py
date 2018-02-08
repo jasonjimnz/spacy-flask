@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+import json
+
 import spacy
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
@@ -48,10 +50,22 @@ def home_en():
     return render_template('search.html', language="en", text=words, tokens=tokens)
 
 @app.route('/es')
-def home_es():
+def home_es_json():
     words = request.args.get('text', default=None)
     tokens = nlp_es.tokenize_text(words)
     return render_template('search.html', language="es", text=words, tokens=tokens)
+
+@app.route('/json/en')
+def home_en_json():
+    words = request.args.get('text', default=None)
+    tokens = nlp_en.tokenize_text(words)
+    return jsonify(tokens)
+
+@app.route('/json/es')
+def home_es():
+    words = request.args.get('text', default=None)
+    tokens = nlp_es.tokenize_text(words)
+    return jsonify(tokens)
 
 
 if __name__ == '__main__':
