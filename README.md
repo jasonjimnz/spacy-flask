@@ -11,4 +11,4 @@ Go to localhost:3000 and test it:
 
 It is prepared to be used directly from Docker
 
-https://hub.docker.com/r/jasonjimnz/spacy-flask/
+[https://hub.docker.com/r/jasonjimnz/spacy-flask/](https://hub.docker.com/r/jasonjimnz/spacy-flask/)
